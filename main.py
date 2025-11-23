@@ -9,6 +9,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropou
 from tensorflow.keras.utils import to_categorical
 from PIL import Image
 
+
 # ============================================================================
 # CONFIGURAÇÕES GLOBAIS
 # ============================================================================
