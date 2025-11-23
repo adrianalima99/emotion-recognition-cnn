@@ -206,5 +206,5 @@ facial-recognition/
 - **Foco**: Dados, Deep Learning.
 - **Habilidades**: Python, TensorFlow/Keras, Machine Learning.
 - **Contato**: adriana.slima0899@gmail.com
-- **LinkedIn**: [Seu Perfil](https://www.linkedin.com/in/adriana-lima08/)
+- **LinkedIn**: [Adriana Lima](https://www.linkedin.com/in/adriana-lima08/)
 
