@@ -6,6 +6,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20+-orange.svg)](https://www.tensorflow.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green.svg)](https://opencv.org/)
 
 </div>
 
@@ -25,6 +26,17 @@ O projeto inclui um **sistema automatizado de histórico de testes** que gera re
 - 🟦 **Métricas Completas**: Accuracy, precision, recall, F1-score por classe
 - 🟦 **Objetivo de Desempenho**: Meta de acurácia entre 75% e 89%
 - 🟦 **Organização**: Pastas automáticas por timestamp para cada teste
+
+### 🆕 Novidades da v2.0
+
+- ✅ **Reconhecimento em tempo real via webcam**
+- ✅ **Dois detectores de face**: Haar Cascade e DNN
+- ✅ **Suavização de predições** (evita flickering)
+- ✅ **Captura de snapshots** (manual e automática)
+- ✅ **Log de emoções em CSV**
+- ✅ **Relatório de sessão em Markdown**
+- ✅ **Exibição de FPS em tempo real**
+- ✅ **Controles interativos durante execução**
 
 ---
 
@@ -72,36 +84,6 @@ Dataset/FER-2013/
 ```
 
 ---
-
-## 🟦 Como Usar
-
-Execute o script principal:
-
-```bash
-python main.py
-```
-
-O sistema irá:
-1. Carregar e pré-processar as imagens
-2. Criar pasta de teste com timestamp: `Output/test_YYYYMMDD_HHMMSS/`
-3. Treinar o modelo CNN por 30 épocas
-4. Avaliar no conjunto de teste
-5. Calcular métricas detalhadas
-6. Gerar gráficos e salvar modelo
-7. Gerar relatório Markdown completo
-
-### Personalizar Parâmetros
-
-Edite as constantes em `main.py`:
-
-```python
-EPOCHS = 30              # Número de épocas
-BATCH_SIZE = 64          # Tamanho do batch
-VALIDATION_SPLIT = 0.1   # 10% para validação
-RANDOM_SEED = 42         # Seed para reprodutibilidade
-TARGET_ACCURACY_MIN = 0.75  # 75%
-TARGET_ACCURACY_MAX = 0.89  # 89%
-```
 
 ---
 
@@ -152,7 +134,7 @@ Total de Parâmetros: ~839.000
 
 ## 🟦 Sistema de Histórico
 
-Cada execução cria uma pasta única com:
+### Histórico de Treinamento
 
 ```
 Output/test_YYYYMMDD_HHMMSS/
@@ -164,27 +146,45 @@ Output/test_YYYYMMDD_HHMMSS/
 └── loss.png
 ```
 
-**Conteúdo do Relatório:**
-- Identificador do teste (timestamp, seed)
-- Parâmetros de treinamento
-- Informações do dataset
-- Métricas principais
-- Referências aos gráficos
-- Data/hora de início e término
-- Observações relevantes
-- Objetivo de desempenho (75-89%)
+### 🆕 Histórico de Sessões Webcam
+
+```
+Output/webcam_session_YYYYMMDD_HHMMSS/
+├── session_report.md    # Relatório Markdown da sessão
+├── emotions_log.csv     # Log de todas as predições
+└── snapshots/           # Imagens capturadas
+    ├── snapshot_000030.jpg
+    └── manual_143022.jpg
+```
+
+#### Conteúdo do emotions_log.csv
+
+| Coluna | Descrição |
+|--------|-----------|
+| timestamp | Data/hora da predição |
+| frame | Número do frame |
+| emotion | Emoção detectada (EN) |
+| emotion_pt | Emoção detectada (PT) |
+| confidence | Confiança da predição |
+| prob_angry...prob_neutral | Probabilidades por classe |
 
 ---
 
 ## 🟦 Estrutura do Projeto
 
 ```
-facial-recognition/
-├── Dataset/FER-2013/          # Dataset organizado por emoções
-├── Output/                     # Resultados e históricos
-│   └── test_YYYYMMDD_HHMMSS/  # Pasta de cada teste
-├── main.py                     # Script principal
-├── requirements.txt            # Dependências
+emotion-recognition-cnn/
+├── Dataset/FER-2013/              # Dataset organizado por emoções
+├── Output/
+│   ├── test_YYYYMMDD_HHMMSS/      # Pasta de cada treino
+│   └── webcam_session_YYYYMMDD_HHMMSS/  # 🆕 Sessões de webcam
+├── docs/                          # 🆕 Documentação de versões
+│   ├── v1.0_relatorio.md
+│   └── v2.0_relatorio.md
+├── main.py                        # Script de treinamento
+├── camera_demo.py                 # 🆕 Demo webcam em tempo real
+├── inference_utils.py             # 🆕 Utilitários de inferência
+├── requirements.txt
 └── README.md
 ```
 
@@ -193,6 +193,7 @@ facial-recognition/
 ## 🟦 Tecnologias
 
 - **TensorFlow/Keras**: Framework de Deep Learning
+- **OpenCV**: 🆕 Captura de vídeo, detecção facial, visualização
 - **NumPy**: Computação numérica
 - **scikit-learn**: Métricas e utilitários
 - **Matplotlib**: Visualizações
@@ -207,4 +208,3 @@ facial-recognition/
 - **Habilidades**: Python, TensorFlow/Keras, Machine Learning.
 - **Contato**: adriana.slima0899@gmail.com
 - **LinkedIn**: [Adriana Lima](https://www.linkedin.com/in/adriana-lima08/)
-

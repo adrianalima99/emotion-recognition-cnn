@@ -68,3 +68,6 @@ Thumbs.db
 # Documentação pessoal
 docs/
 
+# Arquivo de comandos privado
+COMMANDS.md
+
